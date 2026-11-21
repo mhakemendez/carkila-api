@@ -1,0 +1,10 @@
+kind: wasmer.io/App.v0
+jobs:
+  - name: migrate-database
+    trigger: pre-deployment
+    timeout: 5m
+    retries: 2
+    action:
+      execute:
+        command: php
+        cli_args: ["/app/artisan", "migrate", "--force"]
